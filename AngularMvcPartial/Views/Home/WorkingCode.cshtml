@@ -1,4 +1,9 @@
 ﻿
+@{
+    ViewBag.Title = "WorkingCode";
+}
+
+<h2>WorkingCode</h2>
 
 <div ng-app="siteProcessing" ng-controller="clientSetup">
 	<h3>{{response.TenantID}}</h3>
@@ -18,12 +23,14 @@
 	<input class="btn" id="submit" type="submit" ng-click="submit()" value="Save" />
 </div>
 
+@section scripts {
+	<script type="text/javascript" src="~/bower_components/angular/angular.js"></script>
 
 <script type="text/javascript">
 
 	var app = angular.module('siteProcessing', []);
 	app.controller('clientSetup', function ($scope, $http) {
-		alert("Test");
+
 		$http.get('/home/ClientInformation/1')
 				.success(function (response, status, headers, config) {
 					$scope.response = response;
@@ -46,3 +53,4 @@
 	});
 
 </script>
+}

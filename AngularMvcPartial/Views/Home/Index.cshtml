@@ -3,9 +3,9 @@
 }
 
 <h2>Showing a Partial View</h2>
+<a href="#" onclick="ClientInformation(1); ">Open Dialog</a>
 
-@Html.Partial("_MyPartial")
-
+<div id="ClientSetupDlg"></div>
 
 @section scripts {
 
@@ -27,7 +27,7 @@
                    closeOnEscape: true
                });
         $.ajax({
-            url: '/clientsetup/' + tenantID,
+            url: '/home/clientsetup/' + tenantID,
             type: 'get',
             datatype: 'html',
             async: false,
