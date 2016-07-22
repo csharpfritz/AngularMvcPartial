@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Showing a Partial View</h2>
+
+@Html.Partial("_MyPartial")
+
+
+@section scripts {
+
+    <script type="text/javascript" src="~/bower_components/angular/angular.js"></script>
+
+    <script type="text/javascript">
+<!--
+
+    function ClientInformation(tenantID) {
+        $("#ClientSetupDlg")
+            .dialog(
+               {
+                   width: 700,
+                   height: 700,
+                   title: "Edit Site Payment",
+                   modal: true,
+                   draggable: true,
+                   resizable: true,
+                   closeOnEscape: true
+               });
+        $.ajax({
+            url: '/clientsetup/' + tenantID,
+            type: 'get',
+            datatype: 'html',
+            async: false,
+            success: function (result) {
+                $("#ClientSetupDlg").dialog('open').html(result);
+            }
+        });
+
+    }
+
+    window.myJsonData = { "TenantID": 1, "SiteProcessings": [{ "SiteID": 1, "SiteName": "Horsham", "RegionName": "Pennsylvania", "GatewayAPIKey": "1234", "CreditCardProcessorID": "4312", "ACHProcessorID": "4312" }, { "SiteID": 2, "SiteName": "Philadelphia", "RegionName": "Pennsylvania", "GatewayAPIKey": null, "CreditCardProcessorID": null, "ACHProcessorID": null }, { "SiteID": 3, "SiteName": "Camden", "RegionName": "New Jersey", "GatewayAPIKey": "4333", "CreditCardProcessorID": "343", "ACHProcessorID": null }, { "SiteID": 4, "SiteName": "Trenton", "RegionName": "New Jersey", "GatewayAPIKey": null, "CreditCardProcessorID": "asd", "ACHProcessorID": "dsad" }, { "SiteID": 5, "SiteName": "Wilmington", "RegionName": "Delaware", "GatewayAPIKey": "2231", "CreditCardProcessorID": null, "ACHProcessorID": "4433" }, { "SiteID": 6, "SiteName": "Dover", "RegionName": "Delaware", "GatewayAPIKey": null, "CreditCardProcessorID": null, "ACHProcessorID": null }] };
+
+//-->
+    </script>
+
+}
