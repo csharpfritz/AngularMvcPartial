@@ -1,1 +1,1 @@
-"# AngularMvcPartial Troubleshooting" 
+# AngularMvcPartial Troubleshooting
