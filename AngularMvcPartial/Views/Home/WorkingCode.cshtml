@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "WorkingCode";
+	ViewBag.Title = "WorkingCode";
 }
 
 <h2>WorkingCode</h2>
@@ -28,10 +28,11 @@
 
 <script type="text/javascript">
 
+
 	var app = angular.module('siteProcessing', []);
 	app.controller('clientSetup', function ($scope, $http) {
 
-		$http.get('/home/ClientInformation/1')
+	    $http.get('/home/ClientInformation/1')
 				.success(function (response, status, headers, config) {
 					$scope.response = response;
 					$scope.status = status;

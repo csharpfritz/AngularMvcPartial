@@ -1,48 +1,27 @@
-﻿
+﻿<div id="myAngularApp" ng-app="siteProcessing" ng-controller="clientSetup as ctl">
+    <a href="#" ng-click="ctl.OpenDialog(1); ">Open Dialog</a>
+    <div id="ClientSetupDlg">
 
-<div ng-app="siteProcessing" ng-controller="clientSetup">
-	<h3>{{response.TenantID}}</h3>
-	<h5>{{status}}</h5>
-	<div class="row">
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><strong>Site Name</strong></div>
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><strong>Gateway API Key</strong></div>
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><strong>Credit Card Processor ID</strong></div>
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><strong>ACH Processor ID</strong></div>
-	</div>
-	<div ng-repeat="sitePayments in response.SiteProcessings | orderBy: 'SiteName'">
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><div class="form-group">{{sitePayments.SiteName}}</div></div>
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><div class="form-group"><input type="text" class="form-control" ng-model="sitePayments.GatewayAPIKey" /></div></div>
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><div class="form-group"><input type="text" class="form-control" ng-model="sitePayments.CreditCardProcessorID" /></div></div>
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><div class="form-group"><input type="text" class="form-control" ng-model="sitePayments.ACHProcessorID" /></div></div>
-	</div>
-	<input class="btn" id="submit" type="submit" ng-click="submit()" value="Save" />
+        <div>
+            <h3>{{response.TenantID}}</h3>
+            <h5>{{status}}</h5>
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><strong>Site Name</strong></div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><strong>Gateway API Key</strong></div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><strong>Credit Card Processor ID</strong></div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><strong>ACH Processor ID</strong></div>
+            </div>
+            <div ng-repeat="sitePayments in response.SiteProcessings | orderBy: 'SiteName'">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><div class="form-group">{{sitePayments.SiteName}}</div></div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><div class="form-group"><input type="text" class="form-control" ng-model="sitePayments.GatewayAPIKey" /></div></div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><div class="form-group"><input type="text" class="form-control" ng-model="sitePayments.CreditCardProcessorID" /></div></div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><div class="form-group"><input type="text" class="form-control" ng-model="sitePayments.ACHProcessorID" /></div></div>
+            </div>
+            <input class="btn" id="submit" type="submit" ng-click="ctl.submit()" value="Save" />
+        </div>
+
+    </div>
 </div>
 
 
-<script type="text/javascript">
-
-	var app = angular.module('siteProcessing', []);
-	app.controller('clientSetup', function ($scope, $http) {
-		alert("Test");
-		$http.get('/home/ClientInformation/1')
-				.success(function (response, status, headers, config) {
-					$scope.response = response;
-					$scope.status = status;
-				}).error(function (data, status, headers, config) {
-					$scope.status = status;
-				});
-
-		$scope.submit = function () {
-			$http({
-				url: "/home/SaveClientInformation",
-				method: "POST",
-				data: $scope.response
-			}).success(function (data, status, headers, config) {
-				$scope.data = data;
-			}).error(function (data, status, headers, config) {
-				$scope.status = status;
-			});
-		};
-	});
-
-</script>
+<script type="text/javascript" src="~/Scripts/myAngularApp.js"></script>
